@@ -1,3 +1,3 @@
-FROM ubuntu:latest
+FROM node:latest
 
-ENTRYPOINT ["top", "-b"]
+ENTRYPOINT [ "npm","run", "dev"]

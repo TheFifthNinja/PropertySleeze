@@ -30,14 +30,14 @@ export default function Example() {
   return (
     <div className={`bg-white dark:bg-gray-900 min-h-screen`}>
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav aria-label="Global" className={`flex items-center justify-between p-6 lg:px-8 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+        <nav aria-label="Global" className={`flex items-center justify-between p-4 lg:px-8 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
-                alt=""
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
+                alt="Company Logo"
+                src="/logo.png"
+                className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto"
               />
             </a>
           </div>
@@ -71,8 +71,8 @@ export default function Example() {
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
                 <img
-                  alt=""
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  alt="Company Logo"
+                  src="logo.png"
                   className="h-8 w-auto"
                 />
               </a>

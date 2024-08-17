@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 .DS_Store
 *.pyc
+node_modules/
 
 ### STS ###
 .apt_generated
