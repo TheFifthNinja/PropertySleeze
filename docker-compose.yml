@@ -1,8 +1,8 @@
 services:
   frontend:
-    build: ./frontend
+    build: ./Property-Sleeze
     volumes:
-      - .:/app
+      - ./Property-Sleeze:/app
     ports:
       - "8001:8001"
     depends_on:
@@ -12,7 +12,7 @@ services:
   backend:
     build: ./backend
     volumes:
-      - .:/app
+      - ./backend:/app
     ports:
       - "8000:8000"
     depends_on:
@@ -21,8 +21,11 @@ services:
 
   db:
     image: postgres
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
     environment:
-      POSTGRES_DB: cosc203KevDan
+      POSTGRES_DB: PropertySleeze
       POSTGRES_HOST_AUTH_METHOD: trust
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
