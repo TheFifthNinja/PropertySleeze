@@ -1,12 +1,14 @@
 package com.unitedApi.model
 
-import io.ktor.util.reflect.*
 import java.sql.ResultSet
-import kotlin.reflect.KClass
 import kotlin.reflect.KCallable
 import kotlin.reflect.KParameter
-import kotlin.reflect.javaType
-import kotlin.reflect.jvm.internal.impl.util.ArrayMap
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import java.math.BigDecimal
+
 
 fun <T> mappingDB(resultSet: ResultSet,classes: KCallable<T>):List<T>
 {
@@ -24,4 +26,17 @@ fun <T> mappingDB(resultSet: ResultSet,classes: KCallable<T>):List<T>
         l.add(classes.callBy(map))
     }
     return l
+}
+
+object BigDecimalSerializer: KSerializer<BigDecimal> {
+    override fun deserialize(decoder: Decoder): BigDecimal {
+        return decoder.decodeString().toBigDecimal()
+    }
+
+    override fun serialize(encoder: Encoder, value: BigDecimal) {
+        encoder.encodeString(value.toPlainString())
+    }
+
+    override val descriptor: SerialDescriptor
+        get() = PrimitiveSerialDescriptor("BigDecimal", PrimitiveKind.STRING)
 }

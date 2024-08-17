@@ -4,7 +4,7 @@ services:
     volumes:
       - ./Property-Sleeze:/app
     ports:
-      - "8001:8001"
+      - "5173:5173"
     depends_on:
       db:
         condition: service_healthy
@@ -12,9 +12,9 @@ services:
   backend:
     build: ./backend
     volumes:
-      - ./backend:/app
+      - ./backend/build/libs/fat.jar:/app/ktor-docker-sample.jar
     ports:
-      - "8000:8000"
+      - "8084:8084"
     depends_on:
       db:
         condition: service_healthy
