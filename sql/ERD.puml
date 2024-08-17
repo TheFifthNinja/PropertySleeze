@@ -1,0 +1,31 @@
+@startuml
+
+class Renter{
+    username: VarChar(100)
+    --
+}
+
+class Renting{
+    username: VarChar(100) <FK>
+    address : VarChar(100) <FK>
+    --
+}
+
+class Property{
+ address: VarChar(100)
+ --
+ rent: Num(10,2)
+ username: VarChar(100) <FK>
+ picture : image
+ description : text
+}
+
+class PropertyManger{
+ username: VarChar(100)
+ --
+}
+Renter ||--o{ Renting
+Property ||--o{ Renting
+PropertyManger ||--o{ Property
+
+@enduml
