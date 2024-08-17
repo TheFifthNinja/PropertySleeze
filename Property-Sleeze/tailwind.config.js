@@ -6,7 +6,11 @@ export default {
   ],
   darkMode: 'class', // Enable dark mode using class strategy
   theme: {
-    extend: {},
+    screens: {
+      'custom': '1200px',
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms'),
+  require('@tailwindcss/typography'),
+  require('@tailwindcss/aspect-ratio')],
 }
