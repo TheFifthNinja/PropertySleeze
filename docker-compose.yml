@@ -1,6 +1,6 @@
 services:
-  user:
-    build: ./User
+  frontend:
+    build: ./frontend
     volumes:
       - .:/app
     ports:
@@ -9,8 +9,8 @@ services:
       db:
         condition: service_healthy
 
-  owner:
-    build: ./Owner
+  backend:
+    build: ./backend
     volumes:
       - .:/app
     ports:
