@@ -5,12 +5,12 @@ import com.unitedApi.model.mappingDB
 import java.sql.Connection
 
 class RentingImpDAO(val connection: Connection):RentingDAO {
-    override fun getRenting(username: String, address: String): Renting {
+    override fun getRenting(username: String, address: String): Renting? {
         val statement = connection.prepareStatement("SELECT * FROM Renting where username = ? and address = ?")
         statement.setString(1,username)
         statement.setString(2,address)
         val resultSet = statement.executeQuery()
-        return mappingDB(resultSet, ::Renting)[0]
+        return mappingDB(resultSet, ::Renting).getOrNull(0)
     }
 
     override fun createRenting(renting: Renting) {

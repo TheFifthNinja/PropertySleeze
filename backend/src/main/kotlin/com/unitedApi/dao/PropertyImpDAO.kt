@@ -5,11 +5,11 @@ import com.unitedApi.model.mappingDB
 import java.sql.Connection
 
 class PropertyImpDAO(val connection: Connection):PropertyDAO {
-    override fun getProperty(address: String): Property {
+    override fun getProperty(address: String): Property? {
         val statement = connection.prepareStatement("SELECT * FROM Property where address = ?")
         statement.setString(1,address)
         val resultSet = statement.executeQuery()
-        return mappingDB(resultSet, ::Property)[0]
+        return mappingDB(resultSet, ::Property).getOrNull(0)
     }
 
     override fun createProperty(property: Property) {
