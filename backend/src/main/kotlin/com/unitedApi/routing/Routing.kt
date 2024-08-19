@@ -37,11 +37,13 @@ fun Route.renterRouting()
         get("") {
             call.respond(renterDAO.getRenters())
         }
-//        get("/{username}") {
-//            if (!anyNull(call.parameters["username"]))
-//                call.respond(renterDAO.getRenter(call.parameters["username"]!!))
-//            else call.response.status(HttpStatusCode.BadRequest)
-//        }
+        get("/{username}") {
+            if (!anyNull(call.parameters["username"]))
+                renterDAO.getRenter(call.parameters["username"]!!)?.let{
+                    call.respond(it)
+                } ?: call.response.status(HttpStatusCode.BadRequest)
+            else call.response.status(HttpStatusCode.BadRequest)
+        }
         post("") {
             renterDAO.createRenter(call.receive<Renter>())
             call.response.status(HttpStatusCode.Created)
@@ -56,11 +58,13 @@ fun Route.rentingRouting()
         get("") {
             call.respond(rentingDAO.getRentings())
         }
-//        get("/{username}/{address}") {
-//            if (!anyNull(call.parameters["username"], call.parameters["address"]))
-//                call.respond(rentingDAO.getRenting(call.parameters["username"]!!, call.parameters["address"]!!))
-//            else call.response.status(HttpStatusCode.BadRequest)
-//        }
+        get("/{username}/{address}") {
+            if (!anyNull(call.parameters["username"], call.parameters["address"]))
+                rentingDAO.getRenting(call.parameters["username"]!!, call.parameters["address"]!!)?.let{
+                    call.respond(it)
+                } ?: call.response.status(HttpStatusCode.BadRequest)
+            else call.response.status(HttpStatusCode.BadRequest)
+        }
         get("/renter/{username}") {
             if (!anyNull(call.parameters["username"]))
                 call.respond(rentingDAO.getRentingByUsername(call.parameters["username"]!!))
@@ -85,12 +89,14 @@ fun Route.propertyRouting()
         get("") {
             call.respond(propertyDAO.getPropertys())
         }
-//        get("/{address}")
-//        {
-//            if (!anyNull(call.parameters["address"]))
-//                call.respond(propertyDAO.getProperty(call.parameters["address"]!!))
-//            else call.response.status(HttpStatusCode.BadRequest)
-//        }
+        get("/{address}")
+        {
+            if (!anyNull(call.parameters["address"]))
+                propertyDAO.getProperty(call.parameters["address"]!!)?.let {
+                    call.respond(it)
+                } ?: call.response.status(HttpStatusCode.BadRequest)
+            else call.response.status(HttpStatusCode.BadRequest)
+        }
         get("/byManger/{username}") {
             if (!anyNull(call.parameters["username"]))
                 call.respond(propertyDAO.getPropertyByPropertyManger(call.parameters["username"]!!))
@@ -110,12 +116,14 @@ fun Route.propertyMangerRouting()
         get("") {
             call.respond(propertyMangerDAO.getPropertyMangers())
         }
-//        get("/{username}")
-//        {
-//            if (!anyNull(call.parameters["username"]))
-//                call.respond(propertyMangerDAO.getPropertyManger(call.parameters["username"]!!)?)
-//            else call.response.status(HttpStatusCode.BadRequest)
-//        }
+        get("/{username}")
+        {
+            if (!anyNull(call.parameters["username"]))
+                propertyMangerDAO.getPropertyManger(call.parameters["username"]!!)?.let {
+                    call.respond(it)
+                } ?: call.response.status(HttpStatusCode.BadRequest)
+            else call.response.status(HttpStatusCode.BadRequest)
+        }
         post("") {
             propertyMangerDAO.createPropertyManger(call.receive<PropertyManger>())
             call.response.status(HttpStatusCode.Created)
