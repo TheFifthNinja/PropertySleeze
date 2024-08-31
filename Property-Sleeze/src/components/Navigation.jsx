@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
+import { Link } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
@@ -11,7 +12,7 @@ const navigation = [
   { name: 'Company', href: '#' },
 ]
 
-export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen }) {
+export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen, pathname }) {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <nav aria-label="Global" className={`flex items-center justify-between p-4 custom:px-8 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
@@ -45,8 +46,8 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
           ))}
         </div>
         <div className="hidden custom:flex custom:flex-1 custom:justify-end">
-          <a href="#" className={`text-lg font-semibold leading-6 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>
-            Log in <span aria-hidden="true">&rarr;</span>
+          <a href={pathname === '/sign-in' ? '/create-account' : '/sign-in'} className={`text-lg font-semibold leading-6 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>
+            {pathname === '/sign-in' ? 'Create an account' : 'Log in'} <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>
@@ -85,10 +86,10 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  href={pathname === '/sign-in' ? '/create-account' : '/sign-in'}
                   className={`-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 ${darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'}`}
                 >
-                  Log in
+                  {pathname === '/sign-in' ? 'Create an account' : 'Log in'}
                 </a>
               </div>
             </div>
