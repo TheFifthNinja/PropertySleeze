@@ -6,6 +6,7 @@ HELP.md
 .DS_Store
 *.pyc
 node_modules/
+.vagrant
 
 ### STS ###
 .apt_generated
