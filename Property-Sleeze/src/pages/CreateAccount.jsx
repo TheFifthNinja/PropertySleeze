@@ -80,9 +80,9 @@ export default function CreateAccount() {
 
         <p className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
           Already have an account?{' '}
-          <Link to="/sign-in" className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+          <a href="/sign-in" className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
             Log in
-          </Link>
+          </a>
         </p>
       </div>
     </div>
