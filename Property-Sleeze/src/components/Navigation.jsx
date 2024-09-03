@@ -8,8 +8,7 @@ import { Bars3Icon, XMarkIcon, MoonIcon, SunIcon } from '@heroicons/react/24/out
 const navigation = [
   { name: 'Rent', href: '#' },
   { name: 'Rent to', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'About Us', href: '#' },
+  { name: 'About Us', href: '#' }
 ]
 
 export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen, pathname }) {

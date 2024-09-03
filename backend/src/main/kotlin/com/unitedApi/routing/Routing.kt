@@ -1,27 +1,17 @@
 package com.unitedApi.routing
 
-import com.typesafe.config.ConfigException.Null
-import com.unitedApi.dao.propertyDAO
-import com.unitedApi.dao.propertyMangerDAO
-import com.unitedApi.dao.renterDAO
-import com.unitedApi.dao.rentingDAO
-import com.unitedApi.model.Property
-import com.unitedApi.model.PropertyManger
-import com.unitedApi.model.Renter
-import com.unitedApi.model.Renting
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.serialization.json.Json
+import com.unitedApi.dao.*
+import com.unitedApi.model.*
 
 fun Application.configureRouting() {
     routing {
-        //Chnage again
         get("/") {
             call.respondText("Hello World!")
-            //call.respondText("Cheese")
         }
         renterRouting()
         rentingRouting()
@@ -30,114 +20,146 @@ fun Application.configureRouting() {
     }
 }
 
-fun Route.renterRouting()
-{
-    route("/renter")
-    {
+fun Route.renterRouting() {
+    route("/renter") {
+        // Get all
         get("") {
             call.respond(renterDAO.getRenters())
         }
+        // Get Renter by username
         get("/{username}") {
-            if (!anyNull(call.parameters["username"]))
-                renterDAO.getRenter(call.parameters["username"]!!)?.let{
-                    call.respond(it)
-                } ?: call.response.status(HttpStatusCode.BadRequest)
-            else call.response.status(HttpStatusCode.BadRequest)
+            val username = call.parameters["username"]
+            if (username != null) {
+                val renter = renterDAO.getRenter(username)
+                if (renter != null) {
+                    call.respond(renter)
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Renter not found")
+                }
+            } else {
+                call.respond(HttpStatusCode.BadRequest, "Missing username")
+            }
         }
+        // Create Renter
         post("") {
-            renterDAO.createRenter(call.receive<Renter>())
-            call.response.status(HttpStatusCode.Created)
+            val renter = call.receive<Renter>()
+            renterDAO.createRenter(renter)
+            call.respond(HttpStatusCode.Created)
         }
     }
 }
 
-fun Route.rentingRouting()
-{
-    route("/renting")
-    {
+fun Route.rentingRouting() {
+    route("/renting") {
+        // Get all
         get("") {
             call.respond(rentingDAO.getRentings())
         }
+        // Get renting by username and address
         get("/{username}/{address}") {
-            if (!anyNull(call.parameters["username"], call.parameters["address"]))
-                rentingDAO.getRenting(call.parameters["username"]!!, call.parameters["address"]!!)?.let{
-                    call.respond(it)
-                } ?: call.response.status(HttpStatusCode.BadRequest)
-            else call.response.status(HttpStatusCode.BadRequest)
+            val username = call.parameters["username"]
+            val address = call.parameters["address"]
+            if (username != null && address != null) {
+                val renting = rentingDAO.getRenting(username, address)
+                if (renting != null) {
+                    call.respond(renting)
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Renting not found")
+                }
+            } else {
+                call.respond(HttpStatusCode.BadRequest, "Missing username or address")
+            }
         }
+        // Get renting by username
         get("/renter/{username}") {
-            if (!anyNull(call.parameters["username"]))
-                call.respond(rentingDAO.getRentingByUsername(call.parameters["username"]!!))
-            else call.response.status(HttpStatusCode.BadRequest)
+            val username = call.parameters["username"]
+            if (username != null) {
+                call.respond(rentingDAO.getRentingByUsername(username))
+            } else {
+                call.respond(HttpStatusCode.BadRequest, "Missing username")
+            }
         }
+        // Get renting by address
         get("/property/{address}") {
-            if (!anyNull(call.parameters["address"]))
-                call.respond(rentingDAO.getRentingByAddress(call.parameters["address"]!!))
-            else call.response.status(HttpStatusCode.BadRequest)
+            val address = call.parameters["address"]
+            if (address != null) {
+                call.respond(rentingDAO.getRentingByAddress(address))
+            } else {
+                call.respond(HttpStatusCode.BadRequest, "Missing address")
+            }
         }
+        // Create Renting
         post("") {
-            rentingDAO.createRenting(call.receive<Renting>())
-            call.response.status(HttpStatusCode.Created)
+            val renting = call.receive<Renting>()
+            rentingDAO.createRenting(renting)
+            call.respond(HttpStatusCode.Created)
         }
     }
 }
 
-fun Route.propertyRouting()
-{
-    route("/property")
-    {
+fun Route.propertyRouting() {
+    route("/property") {
+        // Get all
         get("") {
-            call.respond(propertyDAO.getPropertys())
+            call.respond(propertyDAO.getProperties())
         }
-        get("/{address}")
-        {
-            if (!anyNull(call.parameters["address"]))
-                propertyDAO.getProperty(call.parameters["address"]!!)?.let {
-                    call.respond(it)
-                } ?: call.response.status(HttpStatusCode.BadRequest)
-            else call.response.status(HttpStatusCode.BadRequest)
+        // Get property by address
+        get("/{address}") {
+            val address = call.parameters["address"]
+            if (address != null) {
+                val property = propertyDAO.getProperty(address)
+                if (property != null) {
+                    call.respond(property)
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Property not found")
+                }
+            } else {
+                call.respond(HttpStatusCode.BadRequest, "Missing address")
+            }
         }
+        // Get properties by property manager username
         get("/byManger/{username}") {
-            if (!anyNull(call.parameters["username"]))
-                call.respond(propertyDAO.getPropertyByPropertyManger(call.parameters["username"]!!))
-            else call.response.status(HttpStatusCode.BadRequest)
+            val username = call.parameters["username"]
+            if (username != null) {
+                call.respond(propertyDAO.getPropertiesByPropertyManager(username))
+            } else {
+                call.respond(HttpStatusCode.BadRequest, "Missing username")
+            }
         }
+        // Create Property
         post("") {
-            propertyDAO.createProperty(call.receive<Property>())
-            call.response.status(HttpStatusCode.Created)
+            val property = call.receive<Property>()
+            propertyDAO.createProperty(property)
+            call.respond(HttpStatusCode.Created)
         }
     }
 }
 
-fun Route.propertyMangerRouting()
-{
-    route("/propertyManger")
-    {
+fun Route.propertyMangerRouting() {
+    route("/propertyManger") {
+        // Get all
         get("") {
-            call.respond(propertyMangerDAO.getPropertyMangers())
+            call.respond(propertyMangerDAO.getPropertyManagers())
         }
-        get("/{username}")
-        {
-            if (!anyNull(call.parameters["username"]))
-                propertyMangerDAO.getPropertyManger(call.parameters["username"]!!)?.let {
-                    call.respond(it)
-                } ?: call.response.status(HttpStatusCode.BadRequest)
-            else call.response.status(HttpStatusCode.BadRequest)
+        // Sign-in
+        get("/{username}") {
+            val username = call.parameters["username"]
+            if (username != null) {
+                val propertyManager = propertyMangerDAO.getPropertyManager(username)
+                if (propertyManager != null) {
+                    call.respond(propertyManager)
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Property manager not found")
+                }
+            } else {
+                call.respond(HttpStatusCode.BadRequest, "Missing username")
+            }
         }
+        // Create Account
         post("") {
-            propertyMangerDAO.createPropertyManger(call.receive<PropertyManger>())
-            call.response.status(HttpStatusCode.Created)
+            val propertyManager = call.receive<PropertyManager>()
+            propertyMangerDAO.createPropertyManager(propertyManager)
+            call.respond(HttpStatusCode.Created)
         }
     }
-}
-
-fun anyNull(vararg a:Any?):Boolean
-{
-    for (b in a){
-        if (b == null)
-        {
-            return true
-        }
-    }
-    return false
 }
