@@ -9,7 +9,7 @@ const navigation = [
   { name: 'Rent', href: '#' },
   { name: 'Rent to', href: '#' },
   { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'About Us', href: '#' },
 ]
 
 export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen, pathname }) {

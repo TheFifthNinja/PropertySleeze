@@ -6,16 +6,36 @@ export default function CreateAccount() {
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Address:', address);
+
+    const formData = {
+      username: username,
+      password: password,
+      address: address,
+    };
+
+    try {
+      const response = await fetch('/propertyManager', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log('Account created successfully');
+      } else {
+        console.error('Failed to create account');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white dark:bg-gray-900">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center mt-20"> {/* Added mt-20 */}
+    <div className="min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white dark:bg-gray-900">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center mt-20">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
           Create Your Account
         </h2>
@@ -35,7 +55,7 @@ export default function CreateAccount() {
               onChange={(e) => setUsername(e.target.value)}
               required
               autoComplete="username"
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-gray-900 dark:text-gray-100 shadow-sm placeholder:text-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
+              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
             />
           </div>
 
@@ -51,7 +71,7 @@ export default function CreateAccount() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="new-password"
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-gray-900 dark:text-gray-100 shadow-sm placeholder:text-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
+              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
             />
           </div>
 
@@ -66,7 +86,7 @@ export default function CreateAccount() {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-gray-900 dark:text-gray-100 shadow-sm placeholder:text-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
+              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
             />
           </div>
 
