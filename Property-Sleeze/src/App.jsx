@@ -5,6 +5,7 @@ import DarkMode from './components/DarkMode';
 import Hero from './components/Hero';
 import SignIn from './pages/SignIn';
 import CreateAccount from './pages/CreateAccount';
+import CreateProperty from './pages/CreateProperty';
 
 function AppContent() {
   const location = useLocation();
@@ -43,6 +44,7 @@ function AppContent() {
       />
       <Routes>
         <Route path="/" element={<Hero darkMode={darkMode} />} />
+        <Route path="/create-property" element={<CreateProperty user={"dez"} />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/create-account" element={<CreateAccount />} /> {/* Add the new route */}
       </Routes>
