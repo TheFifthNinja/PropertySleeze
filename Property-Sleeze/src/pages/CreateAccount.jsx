@@ -10,16 +10,16 @@ export default function CreateAccount() {
     event.preventDefault();
 
     const formData = {
-      username: username,
-      password: password,
-      address: address,
+      "username": username,
     };
 
     try {
-      const response = await fetch('/propertyManager', {
+      const response = await fetch('http://localhost:8084/propertyManger', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": '*',
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
         },
         body: JSON.stringify(formData),
       });
@@ -55,37 +55,6 @@ export default function CreateAccount() {
               onChange={(e) => setUsername(e.target.value)}
               required
               autoComplete="username"
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              autoComplete="new-password"
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="address" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-              Address
-            </label>
-            <input
-              id="address"
-              name="address"
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
               className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
             />
           </div>
