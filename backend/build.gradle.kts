@@ -37,6 +37,7 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:1.19.8")
     testImplementation("org.testcontainers:testcontainers:1.19.8")
     testImplementation("org.testcontainers:junit-jupiter:1.19.8")
+    implementation("io.ktor:ktor-server-cors:$kotlin_version") 
 
 
 

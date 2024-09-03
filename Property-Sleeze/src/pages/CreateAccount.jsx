@@ -14,12 +14,10 @@ export default function CreateAccount() {
     };
 
     try {
-      const response = await fetch('http://localhost:8084/propertyManger', {
+      const response = await fetch('http://frontend:8084/propertyManger', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "Access-Control-Allow-Origin": '*',
-          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
         },
         body: JSON.stringify(formData),
       });
