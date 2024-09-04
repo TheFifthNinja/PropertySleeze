@@ -17,7 +17,7 @@ function AppContent() {
     return savedDarkMode;
   });
 
-  handleLogin = (renter) => {
+  const handleLogin = (renter) => {
     setRenter(renter)
   }
 
