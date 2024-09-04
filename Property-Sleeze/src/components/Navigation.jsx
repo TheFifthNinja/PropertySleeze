@@ -7,7 +7,7 @@ import { Bars3Icon, XMarkIcon, MoonIcon, SunIcon } from '@heroicons/react/24/out
 
 const navigation = [
   { name: 'Rent', href: '#' },
-  { name: 'Rent to', href: '#' },
+  { name: 'Rent to', href: '/create-account' },
   { name: 'About Us', href: '#' }
 ]
 

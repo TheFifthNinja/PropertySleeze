@@ -7,11 +7,34 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import com.unitedApi.dao.*
 import com.unitedApi.model.*
+import io.ktor.http.content.*
+import java.io.File
+import java.nio.file.Paths
 
 fun Application.configureRouting() {
     routing {
         get("/") {
             call.respondText("Hello World!")
+        }
+//        get("/picture")
+//        {
+//              TODO
+//        }
+
+        post("/picture")
+        {
+            val pics = call.receiveMultipart()
+
+            pics.forEachPart { part ->
+                if (part is PartData.FileItem) {
+                    println(Paths.get("").toAbsolutePath().toString())
+                    val fileName = part.originalFileName as String
+                    val fileBytes = part.streamProvider().readBytes()
+                    File("app/pictures/$fileName").writeBytes(fileBytes
+                }
+                part.dispose()
+            }
+            call.respond(HttpStatusCode.Created)
         }
         renterRouting()
         rentingRouting()
@@ -101,7 +124,7 @@ fun Route.propertyRouting() {
     route("/property") {
         // Get all
         get("") {
-            call.respond(propertyDAO.getProperties())
+            call.respond(propertyDAO.getPropertys())
         }
         // Get property by address
         get("/{address}") {
@@ -121,7 +144,7 @@ fun Route.propertyRouting() {
         get("/byManger/{username}") {
             val username = call.parameters["username"]
             if (username != null) {
-                call.respond(propertyDAO.getPropertiesByPropertyManager(username))
+                call.respond(propertyDAO.getPropertyByPropertyManger(username))
             } else {
                 call.respond(HttpStatusCode.BadRequest, "Missing username")
             }
@@ -139,13 +162,13 @@ fun Route.propertyMangerRouting() {
     route("/propertyManger") {
         // Get all
         get("") {
-            call.respond(propertyMangerDAO.getPropertyManagers())
+            call.respond(propertyMangerDAO.getPropertyMangers())
         }
         // Sign-in
         get("/{username}") {
             val username = call.parameters["username"]
             if (username != null) {
-                val propertyManager = propertyMangerDAO.getPropertyManager(username)
+                val propertyManager = propertyMangerDAO.getPropertyManger(username)
                 if (propertyManager != null) {
                     call.respond(propertyManager)
                 } else {
@@ -157,8 +180,8 @@ fun Route.propertyMangerRouting() {
         }
         // Create Account
         post("") {
-            val propertyManager = call.receive<PropertyManager>()
-            propertyMangerDAO.createPropertyManager(propertyManager)
+            val propertyManager = call.receive<PropertyManger>()
+            propertyMangerDAO.createPropertyManger(propertyManager)
             call.respond(HttpStatusCode.Created)
         }
     }

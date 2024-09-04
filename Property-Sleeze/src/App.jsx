@@ -10,7 +10,7 @@ import CreateProperty from './pages/CreateProperty';
 function AppContent() {
   const location = useLocation();
   const pathname = location.pathname;
-
+  const [user,setUser] = setState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
     const savedDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -44,9 +44,9 @@ function AppContent() {
       />
       <Routes>
         <Route path="/" element={<Hero darkMode={darkMode} />} />
-        <Route path="/create-property" element={<CreateProperty user={"dez"} />} />
+        <Route path="/create-property" element={<CreateProperty user={user} />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/create-account" element={<CreateAccount />} /> {/* Add the new route */}
+        <Route path="/create-account" element={<CreateAccount />} />
       </Routes>
       <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </div>

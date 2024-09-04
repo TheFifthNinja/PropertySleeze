@@ -14,7 +14,7 @@ create table PropertyManger(
 create table Property(
     address VARCHAR(100) PRIMARY Key,
     username VARCHAR(100),
-    picture bytea,
+    picture VARCHAR(100),
     description text,
     FOREIGN KEY (username) REFERENCES PropertyManger (username)
 );

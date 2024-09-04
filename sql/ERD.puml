@@ -16,7 +16,7 @@ class Property{
  --
  rent: Num(10,2)
  username: VarChar(100) <FK>
- picture : image
+ picture : VarChar(100)
  description : text
 }
 
@@ -27,5 +27,13 @@ class PropertyManger{
 Renter ||--o{ Renting
 Property ||--o{ Renting
 PropertyManger ||--o{ Property
+
+
+'class User{
+' username: VarChar(100)
+'--
+'}
+'User ||--o{ Renting
+'User ||--o{ Property
 
 @enduml

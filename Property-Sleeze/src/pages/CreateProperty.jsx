@@ -11,40 +11,42 @@ export default function CreateProperty({user}) {
     event.preventDefault();
 
     let formData = new FormData();
-    formData.append('image', picture);
+    let pName = Date.now()+picture.name
+    formData.append('image', picture, pName);
 
-      const response = await fetch('http://localhost:5173/public', {
+      const response = await fetch('http://localhost:8084/picture', {
         method: 'POST',
         headers: {
-          'Content-Type': 'multipart/form-data'
         },
         body: formData,
+      }).catch((err) => {
+        console.log(err);
       });
 
-//     const fd = {
-// //       "username": user.username,
-//       "picture": picture,
-//       "address": address,
-//       "description": description,
-//       "rent":rent
-//     };
-//
-//     try {
-//       const response = await fetch('http://localhost:8084/property', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(fd),
-//       });
-//       if (response.ok) {
-//         console.log('Account created successfully');
-//       } else {
-//         console.error('Failed to create account');
-//       }
-//     } catch (error) {
-//       console.error('Error:', error);
-//     }
+    const fd = {
+      "username": "dave",//user.username,
+      "picture": pName,
+      "address": address,
+      "description": description,
+      "rent":rent
+    };
+
+    try {
+      const response = await fetch('http://localhost:8084/property', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(fd),
+      });
+      if (response.ok) {
+        console.log('Account created successfully');
+      } else {
+        console.error('Failed to create account');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
 
@@ -52,7 +54,7 @@ export default function CreateProperty({user}) {
     <div className="min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white dark:bg-gray-900">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center mt-20">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-          Create Your Account
+          Add your property
         </h2>
       </div>
 
@@ -75,7 +77,7 @@ export default function CreateProperty({user}) {
           </div>
           <div>
               <label htmlFor="description" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                Address
+                Description
               </label>
               <input
                 id="description"
@@ -89,7 +91,7 @@ export default function CreateProperty({user}) {
           </div>
             <div>
                 <label htmlFor="rent" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                  Address
+                  Rent
                 </label>
                 <input
                   id="rent"
@@ -104,13 +106,13 @@ export default function CreateProperty({user}) {
             </div>
             <div>
                 <label htmlFor="picture" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                  Address
+                  Picture
                 </label>
                 <input
                   id="picture"
                   name="picture"
                   type="file"
-                  onChange={(e) => setPicture(e.target.files[0])}
+                  onChange={(e) => {setPicture(e.target.files[0]); console.log(e.target.files[0])}}
                   required
                   autoComplete="address"
                   className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
