@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link, redirect } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Use `useNavigate` instead of `redirect`
 
 export default function CreateAccount() {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize the `useNavigate` hook
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -12,21 +13,21 @@ export default function CreateAccount() {
     setError(null);
 
     const formData = {
-      "username": username,
+      username: username,
     };
 
     try {
       const response = await fetch('http://localhost:8084/renter', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         console.log('Account created successfully');
-        redirect('/signin');
+        navigate('/sign-in'); // Use `navigate` to redirect
       } else {
         throw new Error('Failed to create account');
       }

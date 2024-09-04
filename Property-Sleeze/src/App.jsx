@@ -48,7 +48,7 @@ function AppContent() {
         renter={renter}
       />
       <Routes>
-        <Route path="/" element={<Hero darkMode={darkMode} />} />
+        <Route path="/" element={<Hero renter={renter} darkMode={darkMode} />} />
         <Route path="/create-property" element={<CreateProperty renter={renter} />} />
         <Route path="/sign-in" element={<SignIn  renter={handleLogin}/>} />
         <Route path="/create-account" element={<CreateAccount />} />

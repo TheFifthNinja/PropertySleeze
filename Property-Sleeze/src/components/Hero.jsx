@@ -1,19 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-const Hero = ({ darkMode }) => {
+const Hero = ({ darkMode, renter }) => {
     return (
         <main className={`relative isolate px-6 pt-14 custom:px-8 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'}`}>
             <div
                 aria-hidden="true"
                 className={`absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 ${darkMode ? 'bg-gradient-to-tr from-[#38b6ff] to-[#5e17eb] opacity-30' : 'bg-gradient-to-tr from-[#38b6ff] to-[#5e17eb] opacity-30'}`}
             >
-            <div
-                style={{
-                    clipPath:
-                        'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                }}
-                className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            />
+                <div
+                    style={{
+                        clipPath:
+                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+                    }}
+                    className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                />
             </div>
             <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                 <div className="hidden sm:mb-8 sm:flex sm:justify-center">
@@ -35,10 +35,10 @@ const Hero = ({ darkMode }) => {
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <a
-                            href="/sign-in"
+                            href={renter ? '/rent' : '/sign-in'}
                             className={`rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm ${darkMode ? 'bg-indigo-600 text-white hover:bg-indigo-500' : 'bg-indigo-600 text-white hover:bg-indigo-500'}`}
                         >
-                            Get started
+                            {renter ? 'Start Renting' : 'Get started'}
                         </a>
                         <a href="#" className="text-sm font-semibold leading-6">
                             Learn more <span aria-hidden="true">→</span>
@@ -59,7 +59,7 @@ const Hero = ({ darkMode }) => {
                 />
             </div>
         </main>
-    )
+    );
 }
 
-export default Hero
+export default Hero;

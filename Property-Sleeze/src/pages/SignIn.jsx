@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Example({renter}) {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,6 +23,7 @@ export default function Example({renter}) {
       if (response.ok) {
         console.log('Signed in successfully');
         renter(response.json())
+        navigate('/#');
 
       } else {
         throw new Error('Failed to sign in');
