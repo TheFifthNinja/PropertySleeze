@@ -8,19 +8,16 @@ import io.ktor.server.routing.*
 import com.unitedApi.dao.*
 import com.unitedApi.model.*
 import io.ktor.http.content.*
+import io.ktor.server.http.content.*
 import java.io.File
 import java.nio.file.Paths
 
 fun Application.configureRouting() {
     routing {
+        staticFiles("pictures", File("app/pictures"))
         get("/") {
             call.respondText("Hello World!")
         }
-//        get("/picture")
-//        {
-//              TODO
-//        }
-
         post("/picture")
         {
             val pics = call.receiveMultipart()
@@ -30,7 +27,7 @@ fun Application.configureRouting() {
                     println(Paths.get("").toAbsolutePath().toString())
                     val fileName = part.originalFileName as String
                     val fileBytes = part.streamProvider().readBytes()
-                    File("app/pictures/$fileName").writeBytes(fileBytes
+                    File("app/pictures/$fileName").writeBytes(fileBytes)
                 }
                 part.dispose()
             }
