@@ -36,7 +36,6 @@ fun Application.configureRouting() {
         renterRouting()
         rentingRouting()
         propertyRouting()
-        propertyMangerRouting()
     }
 }
 
@@ -150,35 +149,6 @@ fun Route.propertyRouting() {
         post("") {
             val property = call.receive<Property>()
             propertyDAO.createProperty(property)
-            call.respond(HttpStatusCode.Created)
-        }
-    }
-}
-
-fun Route.propertyMangerRouting() {
-    route("/propertyManger") {
-        // Get all
-        get("") {
-            call.respond(propertyMangerDAO.getPropertyMangers())
-        }
-        // Sign-in
-        get("/{username}") {
-            val username = call.parameters["username"]
-            if (username != null) {
-                val propertyManager = propertyMangerDAO.getPropertyManger(username)
-                if (propertyManager != null) {
-                    call.respond(propertyManager)
-                } else {
-                    call.respond(HttpStatusCode.NotFound, "Property manager not found")
-                }
-            } else {
-                call.respond(HttpStatusCode.BadRequest, "Missing username")
-            }
-        }
-        // Create Account
-        post("") {
-            val propertyManager = call.receive<PropertyManger>()
-            propertyMangerDAO.createPropertyManger(propertyManager)
             call.respond(HttpStatusCode.Created)
         }
     }

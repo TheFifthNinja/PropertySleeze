@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function CreateProperty({user}) {
+export default function CreateProperty({renter}) {
   const [rent, setRent] = useState(0);
   const [picture, setPicture] = useState('');
   const [address, setAddress] = useState('');
@@ -24,7 +24,7 @@ export default function CreateProperty({user}) {
       });
 
     const fd = {
-      "username": "dave",//user.username,
+      "username": renter.username,
       "picture": pName,
       "address": address,
       "description": description,

@@ -1,10 +1,5 @@
 @startuml
 
-class Renter{
-    username: VarChar(100)
-    --
-}
-
 class Renting{
     username: VarChar(100) <FK>
     address : VarChar(100) <FK>
@@ -20,20 +15,13 @@ class Property{
  description : text
 }
 
-class PropertyManger{
+class Renter{
  username: VarChar(100)
- --
+--
 }
 Renter ||--o{ Renting
+Renter ||--o{ Property
 Property ||--o{ Renting
-PropertyManger ||--o{ Property
 
-
-'class User{
-' username: VarChar(100)
-'--
-'}
-'User ||--o{ Renting
-'User ||--o{ Property
 
 @enduml
