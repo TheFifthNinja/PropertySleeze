@@ -17,7 +17,6 @@ export default function Example({renter}) {
         headers: {
           'Content-Type': 'application/json'
         }
-        },
       });
 
       if (response.ok) {
