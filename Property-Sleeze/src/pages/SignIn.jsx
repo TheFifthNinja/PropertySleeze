@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Example() {
+export default function Example({user}) {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ export default function Example() {
 
     try {
       const response = await fetch(`http://localhost:8084/propertyManger/${username}`, {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -22,7 +22,8 @@ export default function Example() {
 
       if (response.ok) {
         console.log('Signed in successfully');
-        // Redirect or perform other actions on success
+        user(response.json())
+
       } else {
         throw new Error('Failed to sign in');
       }

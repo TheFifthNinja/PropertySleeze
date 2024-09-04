@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 
 export default function CreateAccount() {
   const [username, setUsername] = useState('');
@@ -26,7 +26,7 @@ export default function CreateAccount() {
 
       if (response.ok) {
         console.log('Account created successfully');
-        // Redirect or perform other actions on success
+        redirect('/signin');
       } else {
         throw new Error('Failed to create account');
       }

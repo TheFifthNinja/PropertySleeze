@@ -17,6 +17,10 @@ function AppContent() {
     return savedDarkMode;
   });
 
+  handleLogin = (user) => {
+    setUser(user)
+  }
+
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark');
@@ -45,7 +49,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Hero darkMode={darkMode} />} />
         <Route path="/create-property" element={<CreateProperty user={user} />} />
-        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-in" element={<SignIn  user={handleLogin}/>} />
         <Route path="/create-account" element={<CreateAccount />} />
       </Routes>
       <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
