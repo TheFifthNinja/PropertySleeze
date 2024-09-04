@@ -17,7 +17,7 @@ class PropertyImpDAO(val connection: Connection):PropertyDAO {
         statement.setString(1,property.address)
         statement.setBigDecimal(2,property.rent)
         statement.setString(3,property.username)
-        statement.setBytes(4,property.picture)
+        statement.setString(4,property.picture)
         statement.setString(5,property.description)
         statement.executeUpdate()
     }

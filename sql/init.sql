@@ -9,6 +9,7 @@ create table Renter(
 create table Property(
     address VARCHAR(100) PRIMARY Key,
     username VARCHAR(100),
+    rent NUMERIC(10,2),
     picture VARCHAR(100),
     description text,
     FOREIGN KEY (username) REFERENCES Renter (username)

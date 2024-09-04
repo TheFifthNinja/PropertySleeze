@@ -30,6 +30,8 @@ export default function CreateProperty({renter}) {
       "description": description,
       "rent":rent
     };
+    console.log(renter)
+    console.log(fd)
 
     try {
       const response = await fetch('http://localhost:8084/property', {

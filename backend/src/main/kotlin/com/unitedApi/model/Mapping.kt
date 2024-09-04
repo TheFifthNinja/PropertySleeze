@@ -20,6 +20,7 @@ fun <T> mappingDB(resultSet: ResultSet,classes: KCallable<T>):List<T>
                 "kotlin.String" -> map[it] = resultSet.getString(it.name)
                 "kotlin.Int" -> map[it] = resultSet.getInt(it.name)
                 "java.sql.Date" -> map[it] = resultSet.getDate(it.name)
+                "java.math.BigDecimal" -> map[it] = resultSet.getBigDecimal(it.name)
                 else -> throw Exception("Unknown type:"+it.type+" For "+ it.name)
             }
         }

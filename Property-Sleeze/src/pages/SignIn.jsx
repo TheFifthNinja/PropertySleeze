@@ -21,7 +21,8 @@ export default function Example({renter}) {
 
       if (response.ok) {
         console.log('Signed in successfully');
-        renter(response.json())
+        let data = await response.json();
+        renter(data);
 
       } else {
         throw new Error('Failed to sign in');
