@@ -17,7 +17,7 @@ function AppContent() {
     return savedDarkMode;
   });
 
-  handleLogin = (renter) => {
+  const handleLogin = (renter) => {
     setRenter(renter)
   }
 
@@ -45,7 +45,7 @@ function AppContent() {
         mobileMenuOpen={mobileMenuOpen} 
         setMobileMenuOpen={setMobileMenuOpen} 
         pathname={pathname}
-        user={user}
+        renter={renter}
       />
       <Routes>
         <Route path="/" element={<Hero darkMode={darkMode} />} />
