@@ -16,8 +16,7 @@ export default function Example({user}) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username }),
+        }
       });
 
       if (response.ok) {
