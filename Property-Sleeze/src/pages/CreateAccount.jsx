@@ -16,7 +16,7 @@ export default function CreateAccount() {
     };
 
     try {
-      const response = await fetch('http://localhost:8084/propertyManger', {
+      const response = await fetch('http://localhost:8084/Renter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -1,13 +1,8 @@
 drop table if exists Renter;
-drop table if exists PropertyManger;
 drop table if exists Property;
 drop table if exists Renting;
 
 create table Renter(
-    username VARCHAR(100) PRIMARY Key
-);
-
-create table PropertyManger(
     username VARCHAR(100) PRIMARY Key
 );
 
@@ -16,7 +11,7 @@ create table Property(
     username VARCHAR(100),
     picture VARCHAR(100),
     description text,
-    FOREIGN KEY (username) REFERENCES PropertyManger (username)
+    FOREIGN KEY (username) REFERENCES Renter (username)
 );
 
 create table Renting(
