@@ -10,7 +10,7 @@ import CreateProperty from './pages/CreateProperty';
 function AppContent() {
   const location = useLocation();
   const pathname = location.pathname;
-  const [user,setUser] = setState(null)
+  const [user,setUser] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
     const savedDarkMode = localStorage.getItem('darkMode') === 'true';
