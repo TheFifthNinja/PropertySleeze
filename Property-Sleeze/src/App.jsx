@@ -44,7 +44,8 @@ function AppContent() {
         toggleDarkMode={toggleDarkMode} 
         mobileMenuOpen={mobileMenuOpen} 
         setMobileMenuOpen={setMobileMenuOpen} 
-        pathname={pathname} // Pass the pathname here
+        pathname={pathname}
+        user={user}
       />
       <Routes>
         <Route path="/" element={<Hero darkMode={darkMode} />} />
