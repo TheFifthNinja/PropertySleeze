@@ -7,4 +7,5 @@ interface PropertyDAO {
     fun createProperty(property:Property)
     fun getPropertys():List<Property>
     fun getPropertyByPropertyManger(username:String):List<Property>
+    fun getAllNonRentedPropertys():List<Property>
 }

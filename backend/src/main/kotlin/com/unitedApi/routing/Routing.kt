@@ -151,5 +151,8 @@ fun Route.propertyRouting() {
             propertyDAO.createProperty(property)
             call.respond(HttpStatusCode.Created)
         }
+        get("/notRenting") {
+            call.respond(propertyDAO.getAllNonRentedPropertys())
+        }
     }
 }
