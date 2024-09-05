@@ -11,7 +11,7 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
    const navigation = [];
 
    if (renter){
-    navigation.push({ name: 'Rent', href: '#' });
+    navigation.push({ name: 'Rent', href: '/show-property' });
     navigation.push({ name: 'Rent to', href: '/create-property' });
    }
    navigation.push({ name: 'About Us', href: '#' });

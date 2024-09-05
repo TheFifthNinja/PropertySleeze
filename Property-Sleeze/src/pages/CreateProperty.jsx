@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link useNavigate} from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 
 export default function CreateProperty({renter}) {
   const [rent, setRent] = useState(0);
