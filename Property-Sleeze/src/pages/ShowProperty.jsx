@@ -2,23 +2,14 @@ import React, { useEffect,useState } from 'react';
 
 export default function ShowProperty({renter}) {
     const [update, plsUpdate] = useState(1);
-    const [products, setProducts] = useState([
-       {
-         id: 1,
-         name: 'Earthen Bottle',
-         href: '#',
-         price: '$48',
-         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-       }
-   ]);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:8084/property/notRenting', {
            method: 'GET',
         }).then((res) => res.json())
         .then((data) => {
-            let temp = products;
+            let temp = [];
             data.forEach((d) => temp.push({
                     id: temp.length+1,
                     name: d.address,
