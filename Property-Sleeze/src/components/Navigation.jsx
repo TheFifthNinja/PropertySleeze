@@ -5,14 +5,16 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-const navigation = [
-  { name: 'Rent', href: '#' },
-  { name: 'Rent to', href: '/create-property' },
-  { name: 'About Us', href: '#' }
-];
-
 export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen, pathname, renter, setRenter }) {
   const navigate = useNavigate();
+
+   const navigation = [];
+
+   if (renter){
+    navigation.push({ name: 'Rent', href: '#' });
+    navigation.push({ name: 'Rent to', href: '/create-property' });
+   }
+   navigation.push({ name: 'About Us', href: '#' });
 
   const handleLogout = () => {
     console.log('Logging out...');
