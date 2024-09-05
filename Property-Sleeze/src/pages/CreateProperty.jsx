@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link useNavigate} from 'react-router-dom';
 
 export default function CreateProperty({renter}) {
   const [rent, setRent] = useState(0);
   const [picture, setPicture] = useState('');
   const [address, setAddress] = useState('');
   const [description, setDescription] = useState('');
+  const navigate = useNavigate(); // Initialize the `useNavigate` hook
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,9 +43,10 @@ export default function CreateProperty({renter}) {
         body: JSON.stringify(fd),
       });
       if (response.ok) {
-        console.log('Account created successfully');
+        console.log('Property created successfully');
+        navigate('/'); // Use `navigate` to redirect
       } else {
-        console.error('Failed to create account');
+        console.error('Failed to create property');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -117,8 +119,8 @@ export default function CreateProperty({renter}) {
                   onChange={(e) => {setPicture(e.target.files[0]); console.log(e.target.files[0])}}
                   required
                   autoComplete="address"
-                  className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
-                />
+                  className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-gray-900 dark:text-gray-100 shadow-sm placeholder:text-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
+               />
             </div>
 
 
