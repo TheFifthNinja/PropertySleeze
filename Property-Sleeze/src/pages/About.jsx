@@ -14,7 +14,7 @@ const people = [
     {
         name: 'Daniel West',
         role: 'Co-Founder / CEO',
-        imageUrl: '/Daniel.png',
+        imageUrl: '/Daniel.jpg',
         bio: 'Daniel is a visionary leader with over 15 years of experience in tech innovation.',
         linkedin: 'https://www.linkedin.com/in/daniel-west-535a50282/',
         github: 'https://github.com/bluewolf44',
