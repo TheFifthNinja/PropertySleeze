@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = ({ darkMode, renter }) => {
     return (
@@ -27,20 +28,20 @@ const Hero = ({ darkMode, renter }) => {
                 </div>
                 <div className="text-center">
                     <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-                        Data to enrich your online business
+                        List and Rent the property of your dreams
                     </h1>
                     <p className="mt-6 text-lg leading-8">
-                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                        fugiat veniam occaecat fugiat aliqua.
+                        PropertySleeze is the best place to find your next home. We have a wide range of properties available for rent. Whether you are looking for a house, apartment, or condo, we have the perfect property for you.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
-                        <a
-                            href={renter ? '/rent' : '/sign-in'}
+                        <Link
+                            to={renter ? '/show-property' : '/sign-in'}
+                            state={{ renter }}
                             className={`rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm ${darkMode ? 'bg-indigo-600 text-white hover:bg-indigo-500' : 'bg-indigo-600 text-white hover:bg-indigo-500'}`}
                         >
                             {renter ? 'Start Renting' : 'Get started'}
-                        </a>
-                        <a href="#" className="text-sm font-semibold leading-6">
+                        </Link>
+                        <a href="/About" className="text-sm font-semibold leading-6">
                             Learn more <span aria-hidden="true">→</span>
                         </a>
                     </div>

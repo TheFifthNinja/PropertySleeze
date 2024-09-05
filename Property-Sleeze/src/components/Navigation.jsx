@@ -14,7 +14,7 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
     navigation.push({ name: 'Rent', href: '/show-property' });
     navigation.push({ name: 'Rent to', href: '/create-property' });
    }
-   navigation.push({ name: 'About Us', href: '#' });
+   navigation.push({ name: 'About Us', href: '/about' });
 
   const handleLogout = () => {
     console.log('Logging out...');

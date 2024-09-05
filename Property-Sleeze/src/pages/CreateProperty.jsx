@@ -66,7 +66,7 @@ export default function CreateProperty({renter}) {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="address" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-              Address
+              Name
             </label>
             <input
               id="address"
@@ -95,7 +95,7 @@ export default function CreateProperty({renter}) {
           </div>
             <div>
                 <label htmlFor="rent" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                  Rent
+                  Price (per month)
                 </label>
                 <input
                   id="rent"
@@ -130,16 +130,9 @@ export default function CreateProperty({renter}) {
             type="submit"
             className="w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500"
           >
-            Create Account
+            List Property
           </button>
         </form>
-
-        <p className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
-          Already have an account?{' '}
-          <a href="/sign-in" className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-            Log in
-          </a>
-        </p>
       </div>
     </div>
   );
