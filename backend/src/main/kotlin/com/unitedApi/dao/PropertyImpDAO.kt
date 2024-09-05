@@ -36,7 +36,7 @@ class PropertyImpDAO(val connection: Connection):PropertyDAO {
     }
 
     override fun getAllNonRentedPropertys(): List<Property> {
-        val statement = connection.prepareStatement("SELECT * FROM Property where username not in (Select username from Renting)")
+        val statement = connection.prepareStatement("SELECT * FROM Property where address not in (Select address from Renting)")
         val resultSet = statement.executeQuery()
         return mappingDB(resultSet, ::Property)
     }
