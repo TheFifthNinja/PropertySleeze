@@ -8,6 +8,7 @@ import CreateAccount from './pages/CreateAccount';
 import CreateProperty from './pages/CreateProperty';
 import ShowProperty from './pages/ShowProperty';
 import About from './pages/About';
+import Details from './pages/Details';
 
 function AppContent() {
   const location = useLocation();
@@ -51,6 +52,7 @@ function AppContent() {
       />
       <Routes>
         <Route path="/" element={<Hero renter={renter} darkMode={darkMode} />} />
+        <Route path="/details/:id" element={<Details renter={renter} darkMode={darkMode} />} />
         <Route path="/create-property" element={<CreateProperty renter={renter} />} />
         <Route path="/sign-in" element={<SignIn  renter={handleLogin}/>} />
         <Route path="/create-account" element={<CreateAccount />} />

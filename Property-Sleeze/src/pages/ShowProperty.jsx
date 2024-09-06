@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Home, DollarSign, Loader } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ShowProperty({ renter }) {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [darkMode, setDarkMode] = useState(false); // Added darkMode state
-
+    const navigate = useNavigate(); // Initialize the `useNavigate` hook
     useEffect(() => {
         setIsLoading(true);
         fetch('http://localhost:8084/property/notRenting', {
@@ -23,7 +24,7 @@ export default function ShowProperty({ renter }) {
             const temp = data.map((d, index) => ({
                 id: index + 1,
                 name: d.address,
-                href: '#',
+                href: '/details/'+d.address,
                 price: d.rent,
                 imageSrc: 'http://localhost:8084/pictures/' + d.picture,
                 imageAlt: d.picture,
@@ -95,6 +96,7 @@ export default function ShowProperty({ renter }) {
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
                                         className="px-3 py-1 bg-indigo-600 text-white rounded-md text-sm font-medium dark:bg-indigo-500"
+                                        onClick={() => navigate(product.href)}
                                     >
                                         View Details
                                     </motion.button>
