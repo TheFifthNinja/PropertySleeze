@@ -3,7 +3,8 @@ drop table if exists Property;
 drop table if exists Renting;
 
 create table Renter(
-    username VARCHAR(100) PRIMARY Key
+    username VARCHAR(100) PRIMARY Key,
+    password VARCHAR(100)
 );
 
 create table Property(
@@ -23,9 +24,10 @@ create table Renting(
     FOREIGN KEY (address) REFERENCES Property (address)
 );
 
-INSERT INTO Renter (username) VALUES ('john_doe');
-INSERT INTO Renter (username) VALUES ('jane_smith');
-INSERT INTO Renter (username) VALUES ('mike_jones');
+INSERT INTO Renter (username,password) VALUES
+('john_doe','john_doe'),
+('jane_smith','jane_smith'),
+('mike_jones','mike_jones');
 
 INSERT INTO Property (address, username, rent, picture, description) VALUES 
 ('123 Elm St', 'john_doe', 1200.00, 'elm_street_house.jpg', 'A cozy 2-bedroom house with a garden.'),

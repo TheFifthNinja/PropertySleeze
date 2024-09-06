@@ -46,12 +46,20 @@ fun Route.renterRouting() {
             call.respond(renterDAO.getRenters())
         }
         // Get Renter by username
-        get("/{username}") {
+        get("/{username}/{password}") { //Don't do this password in path, Me being Lazy
             val username = call.parameters["username"]
+            val password = call.parameters["password"]
             if (username != null) {
                 val renter = renterDAO.getRenter(username)
                 if (renter != null) {
-                    call.respond(renter)
+                    if (renter.password == password)
+                    {
+                        call.respond(renter)
+                    }
+                    else
+                    {
+                        call.respond(HttpStatusCode.Unauthorized, "Password Incorrect")
+                    }
                 } else {
                     call.respond(HttpStatusCode.NotFound, "Renter not found")
                 }
