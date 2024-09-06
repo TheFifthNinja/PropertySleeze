@@ -13,6 +13,7 @@ ___
 [![GitHub license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 ![GitHub issues](https://img.shields.io/github/issues/TheFifthNinja/PropertySleeze)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/TheFifthNinja/PropertySleeze)
+[![CI - Build and Test](https://github.com/TheFifthNinja/PropertySleeze/actions/workflows/frontend.yml/badge.svg)](https://github.com/TheFifthNinja/PropertySleeze/actions/workflows/frontend.yml)
 
 This project leverages virtualization technologies to create and deploy a flexible software tool tailored for job seekers. The application, called the Job Application Tracker, is developed to assist students and job hunters in organizing and managing their job search efforts more effectively.
 
