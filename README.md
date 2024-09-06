@@ -1,170 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application Tracker README</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --text-color: #333;
-            --background-color: #f8f9fa;
-            --code-background: #f0f0f0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2, h3 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.3em;
-            margin-top: 1.5em;
-        }
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            border-bottom: none;
-        }
-        h2 {
-            font-size: 1.8em;
-        }
-        h3 {
-            font-size: 1.3em;
-            border-bottom: 1px solid var(--primary-color);
-        }
-        p, ul, ol {
-            margin-bottom: 1em;
-        }
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-        code {
-            background-color: var(--code-background);
-            border-radius: 3px;
-            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 85%;
-            padding: 0.2em 0.4em;
-        }
-        pre {
-            background-color: var(--code-background);
-            border-radius: 5px;
-            padding: 1em;
-            overflow-x: auto;
-        }
-        pre code {
-            background-color: transparent;
-            padding: 0;
-        }
-        ul, ol {
-            padding-left: 2em;
-        }
-        li {
-            margin-bottom: 0.5em;
-        }
-        .container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 2em;
-            margin-top: 2em;
-        }
-        .highlight {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1em;
-            margin-bottom: 1em;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.5em 1em;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-            background-color: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Full Stack Containerized Web App</h1>
+<br />
+<p align="center">
+    <h1 align="center">Full Stack Containerized Web App</h1>
+    <h6 align="center">September 2024 - Daniel West & Kevin Albert</h6>
+    <p align="center">
+        Using virtualization to effect portable building and deployment of software applications
+    </p>
+</p>
 
-        <div class="highlight">
-            <h2>Overview</h2>
-            <p>This project demonstrates the use of virtualization technologies to build and deploy a portable software application for job seekers. Our application, a Job Application Tracker, is designed to help students and job seekers efficiently manage their job search process. It operates across three different virtual machines (VMs), showcasing the power of distributed systems and cloud-ready software development practices.</p>
-            <p>The Job Application Tracker allows users to record and monitor the companies and roles they've applied to, including key information such as application status, submission dates, additional notes, and a chronological history of each application's progress.</p>
-        </div>
+___
 
-        <h2>Built With</h2>
-        <ul>
-            <li><strong>Frontend</strong>: React.js</li>
-            <li><strong>Backend</strong>: Kotlin, Ktor</li>
-            <li><strong>Database</strong>: PostgreSQL</li>
-        </ul>
+## Overview 
+[![GitHub license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+![GitHub issues](https://img.shields.io/github/issues/TheFifthNinja/PropertySleeze)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/TheFifthNinja/PropertySleeze)
 
-        <h2>File Tree</h2>
-        <ul>
-            <li><strong>frontend</strong>: Contains the React.js frontend code</li>
-            <li><strong>backend</strong>: Contains the Kotlin backend code</li>
-            <li><strong>database</strong>: Contains the PostgreSQL database schema and default data</li>
-        </ul>
+This project leverages virtualization technologies to create and deploy a flexible software tool tailored for job seekers. The application, called the Job Application Tracker, is developed to assist students and job hunters in organizing and managing their job search efforts more effectively.
 
-        <h2>Running Locally With Docker</h2>
-        <ol>
-            <li>Clone the repository</li>
-            <li>Run <code>docker-compose up</code> in the root directory</li>
-            <li>Access the frontend at <code>localhost:5173</code> and the backend at <code>localhost:8084</code></li>
-        </ol>
+Deployed across three distinct virtual machines (VMs), the Job Application Tracker highlights the advantages of distributed systems and cloud-compatible development practices. It allows users to keep track of their applications by recording key details such as the roles and companies applied to, the status of each application, submission dates, personal notes, and a detailed timeline of each application's progress.
 
-        <h2>Shutting Down the Project</h2>
-        <ol>
-            <li>Run <code>docker-compose down</code> in the root directory</li>
-        </ol>
+## Built With
 
-        <h2>Project Demonstration</h2>
-        <p>Link to the project demonstration: <a href="#" class="btn">Click Here</a></p>
+* **Frontend:** [React.js](https://reactjs.org) **&** [Tailwind CSS](https://tailwindcss.com)
+* **Backend:** [Kotlin](https://kotlinlang.org) **&** [Ktor](https://ktor.io/)
+* **Database:** [PostgreSQL](https://www.postgresql.org) 
 
-        <h2>Useful Docker Commands</h2>
-        <h3>Building a single docker image</h3>
-        <pre><code>docker build --no-cache --progress=plain --tag "job-tracker-&lt;name&gt;" .</code></pre>
-        <ul>
-            <li><code>--no-cache</code> - Build the image without using cache</li>
-            <li><code>--progress=plain</code> - Show all output from build progress (verbose)</li>
-        </ul>
+## File Tree 
+- `frontend` - Contains the React frontend project
+- `backend` - Contains the Kotlin Ktor backend project
+- `database` - Contains the PostgreSQL database configuration
 
-        <h3>Running a single docker container</h3>
-        <pre><code>docker run -d -p 5000:5000 --name "job-tracker-&lt;name&gt;" job-tracker-&lt;name&gt;</code></pre>
+## Running Locally
 
-        <h3>Stopping a single docker container</h3>
-        <pre><code>docker stop job-tracker-&lt;name&gt;</code></pre>
+1. Clone the repository
+    ```bash
+    git clone https://github.com/TheFifthNinja/PropertySleeze.git
+    ```
+2. Change into the project directory
+    ```bash
+    cd PropertySleeze
+    ```
+3. Open Docker Desktop and ensure it is running.
+4. Build and run the project
+    ```bash
+    docker-compose up -d
+    ```
+5. Open your browser and navigate to [http://localhost:5173](http://localhost:5173) to view the frontend application.
+6. Open your browser and navigate to [http://localhost:8084](http://localhost:8084) to view the backend application.
 
-        <h3>Building and running multiple docker containers from a docker-compose file</h3>
-        <pre><code>docker compose up -d</code></pre>
+### Shutting Down the Project
 
-        <h3>Stopping multiple docker containers from a docker-compose file</h3>
-        <pre><code>docker compose down</code></pre>
+1. Shut down the job tracker 
+    ```bash
+    docker-compose down
+    ```
+2. Shut down the database 
+    ```bash
+    cd database
+    docker-compose down
+    ```
 
-        <h3>Viewing all running docker containers</h3>
-        <pre><code>docker ps</code></pre>
-    </div>
-</body>
-</html>
+## Project Demo
+
+<div align="center">
+   <!-- Add screenshots or link to a demo video -->
+</div>
+
+---
+
+## Useful Docker Commands 
+
+- **Building a single Docker image**
+    ```bash
+    docker build --no-cache --progress=plain --tag "job-tracker-<name>" .
+    ```
+    - `--no-cache` - Build the image without using cache.
+    - `--progress=plain` - Show all output from build progress (verbose).
+
+- **Running a single Docker container**
+    ```bash
+    docker run -d -p 5000:5000 --name "job-tracker-<name>" job-tracker-<name>
+    ```
+
+- **Stopping a single Docker container**
+    ```bash
+    docker stop job-tracker-<name>
+    ```
+
+- **Building and running multiple Docker containers from a `docker-compose` file**
+    ```bash
+    docker-compose up -d
+    ```
+
+- **Stopping multiple Docker containers from a `docker-compose` file**
+    ```bash
+    docker-compose down
+    ```
+
+- **Viewing all running Docker containers**
+    ```bash
+    docker ps
+    ```
