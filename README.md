@@ -1,1 +1,2 @@
-# COSC349-A1
+# Full Stack Containerized Web App
+
