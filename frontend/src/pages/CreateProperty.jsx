@@ -74,7 +74,7 @@ export default function CreateProperty({ renter }) {
         <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label htmlFor="address" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Address
+              Name
             </label>
             <input
               id="address"
