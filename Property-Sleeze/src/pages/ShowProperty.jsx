@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Home, DollarSign, Loader } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+
 
 export default function ShowProperty({ renter }) {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [darkMode, setDarkMode] = useState(false); // Added darkMode state
-    const navigate = useNavigate(); // Initialize the `useNavigate` hook
+    const [darkMode, setDarkMode] = useState(false);
+    const navigate = useNavigate();
+
+    const toggleDarkMode = () => setDarkMode(prev => !prev);
+
     useEffect(() => {
         setIsLoading(true);
         fetch('http://localhost:8084/property/notRenting', {
@@ -39,39 +44,41 @@ export default function ShowProperty({ renter }) {
         });
     }, []);
 
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [darkMode]);
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <Loader className="animate-spin h-10 w-10 text-indigo-600" />
+                <Loader className="animate-spin h-10 w-10 text-indigo-600 dark:text-indigo-400" />
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="text-center text-red-600 p-4">
+            <div className="text-center text-red-600 dark:text-red-400 p-4">
                 <p>{error}</p>
             </div>
         );
     }
 
     return (
-        <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <div className="flex justify-between mb-6">
                     <h2 className="text-2xl font-bold tracking-tight">Available Properties</h2>
-                    <button
-                        onClick={() => setDarkMode(prev => !prev)}
-                        className="text-sm font-medium text-indigo-600 dark:text-indigo-400"
-                    >
-                        Toggle Dark Mode
-                    </button>
                 </div>
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                     {products.map((product) => (
                         <motion.div
                             key={product.id}
-                            className="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800"
+                            className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden"
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
                         >
@@ -95,7 +102,7 @@ export default function ShowProperty({ renter }) {
                                     <motion.button
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
-                                        className="px-3 py-1 bg-indigo-600 text-white rounded-md text-sm font-medium dark:bg-indigo-500"
+                                        className="px-3 py-1 bg-indigo-600 dark:bg-indigo-500 text-white rounded-md text-sm font-medium"
                                         onClick={() => navigate(product.href)}
                                     >
                                         View Details

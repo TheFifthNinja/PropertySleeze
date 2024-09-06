@@ -53,10 +53,10 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Hero renter={renter} darkMode={darkMode} />} />
         <Route path="/details/:id" element={<Details renter={renter} darkMode={darkMode} />} />
-        <Route path="/create-property" element={<CreateProperty renter={renter} />} />
+        <Route path="/create-property" element={<CreateProperty darkMode={darkMode} renter={renter} />} />
         <Route path="/sign-in" element={<SignIn  renter={handleLogin}/>} />
         <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/show-property" element={<ShowProperty renter={renter}/>} />
+        <Route path="/show-property" element={<ShowProperty darkMode={darkMode} renter={renter}/>} />
         <Route path="/about" element={<About renter={renter} darkMode={darkMode} />} />
       </Routes>
       <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />

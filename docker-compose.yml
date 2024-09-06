@@ -13,8 +13,6 @@ services:
     build: ./backend
     ports:
       - "8084:8084"
-    volumes:
-      - ./backend/build/libs/fat.jar:/app/ktor-docker-sample.jar
     depends_on:
       db:
         condition: service_healthy

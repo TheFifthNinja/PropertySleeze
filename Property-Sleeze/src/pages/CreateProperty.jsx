@@ -1,12 +1,24 @@
-import { useState } from 'react';
-import { Link , useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function CreateProperty({renter}) {
+
+export default function CreateProperty({ renter }) {
   const [rent, setRent] = useState(0);
   const [picture, setPicture] = useState('');
   const [address, setAddress] = useState('');
   const [description, setDescription] = useState('');
-  const navigate = useNavigate(); // Initialize the `useNavigate` hook
+  const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleDarkMode = () => setDarkMode(prev => !prev);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,19 +65,15 @@ export default function CreateProperty({renter}) {
     }
   };
 
-
   return (
-    <div className="min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white dark:bg-gray-900">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center mt-20">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-          Add your property
+    <div className="min-h-screen flex items-center justify-center px-6 py-12 lg:px-8 bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
+      <div className="w-full max-w-md">
+        <h2 className="text-3xl font-extrabold text-center text-gray-900 dark:text-white mb-6">
+          Add Your Property
         </h2>
-      </div>
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border border-gray-300 dark:border-gray-700 rounded-lg p-6">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="address" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+          <div className="mb-4">
+            <label htmlFor="address" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Name
             </label>
             <input
@@ -76,59 +84,55 @@ export default function CreateProperty({renter}) {
               onChange={(e) => setAddress(e.target.value)}
               required
               autoComplete="address"
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
+              className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
             />
           </div>
-          <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                Description
-              </label>
-              <input
-                id="description"
-                name="description"
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                autoComplete="address"
-                className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
-              />
+          <div className="mb-4">
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Description
+            </label>
+            <input
+              id="description"
+              name="description"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              autoComplete="address"
+              className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+            />
           </div>
-            <div>
-                <label htmlFor="rent" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                  Price (per month)
-                </label>
-                <input
-                  id="rent"
-                  name="rent"
-                  type="number"
-                  value={rent}
-                  onChange={(e) => setRent(e.target.value)}
-                  required
-                  autoComplete="address"
-                  className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
-                />
-            </div>
-            <div>
-                <label htmlFor="picture" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                  Picture
-                </label>
-                <input
-                  id="picture"
-                  name="picture"
-                  type="file"
-                  onChange={(e) => {setPicture(e.target.files[0]); console.log(e.target.files[0])}}
-                  required
-                  autoComplete="address"
-                  className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-gray-900 dark:text-gray-100 shadow-sm placeholder:text-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
-               />
-            </div>
-
-
-
-
+          <div className="mb-4">
+            <label htmlFor="rent" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Price (per month)
+            </label>
+            <input
+              id="rent"
+              name="rent"
+              type="number"
+              value={rent}
+              onChange={(e) => setRent(e.target.value)}
+              required
+              autoComplete="address"
+              className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="picture" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Picture
+            </label>
+            <input
+              id="picture"
+              name="picture"
+              type="file"
+              onChange={(e) => {setPicture(e.target.files[0]); console.log(e.target.files[0])}}
+              required
+              autoComplete="address"
+              className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+            />
+          </div>
           <button
             type="submit"
-            className="w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500"
+            className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:focus:ring-offset-gray-800"
           >
             List Property
           </button>
