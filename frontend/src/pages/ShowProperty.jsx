@@ -52,21 +52,20 @@ export default function ShowProperty({ renter }) {
         }
     }, [darkMode]);
 
-    if (product.length == 0) {
-        return (
-            <div className="text-center text-red-600 dark:text-red-400 p-4">
-                <p>Currently no properties</p>
-                <p>Please add some</p>
-            </div>
-        )
-    }
-
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen">
                 <Loader className="animate-spin h-10 w-10 text-indigo-600 dark:text-indigo-400" />
             </div>
         );
+    }
+
+    if (products.length == 0) {
+        return (
+            <div className="text-center text-red-600 dark:text-red-400 p-4 flex justify-center items-center h-screen">
+                <p>Currently no properties, please add some</p>
+            </div>
+        )
     }
 
     if (error) {
