@@ -54,10 +54,12 @@ Deployed across three distinct virtual machines (VMs), the Job Application Track
     docker-compose down
 ```
 
-## Project Demo
+## Project Demo (Click Image to Watch)
 
 <div align="center">
-   <!-- Add screenshots or link to a demo video -->
+    <a href="https://www.youtube.com/watch?v=0uhlbVSp1Uw" target="_blank">
+        <img src="./frontend/public/Large Logo.png" alt="Project Demo Video" />
+    </a>
 </div>
 
 ---
