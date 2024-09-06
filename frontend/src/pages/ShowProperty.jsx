@@ -52,6 +52,15 @@ export default function ShowProperty({ renter }) {
         }
     }, [darkMode]);
 
+    if (product.length == 0) {
+        return (
+            <div className="text-center text-red-600 dark:text-red-400 p-4">
+                <p>Currently no properties</p>
+                <p>Please add some</p>
+            </div>
+        )
+    }
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen">
