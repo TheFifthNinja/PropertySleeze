@@ -1,0 +1,43 @@
+# .github/workflows/ci.yml
+
+name: CI - Build and Test
+
+# This specifies that the workflow will run on any push or pull request to the main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# This defines the jobs to be run
+jobs:
+  build-and-test:
+    # Specifies the type of machine the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps to execute in the job
+    steps:
+      # Checks out the repository so that the workflow can access the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Sets up Node.js environment, specifying the version
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      # Installs the necessary dependencies for the project within the frontend directory
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend
+
+      # Builds the application to ensure there are no build errors
+      - name: Build application
+        run: npm run build
+        working-directory: ./frontend
+
+      # Runs tests using Vitest via the npm test script
+      - name: Run tests
+        run: npm run test
+        working-directory: ./frontend

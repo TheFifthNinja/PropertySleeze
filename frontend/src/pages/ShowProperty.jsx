@@ -60,6 +60,14 @@ export default function ShowProperty({ renter }) {
         );
     }
 
+    if (products.length == 0) {
+        return (
+            <div className="text-center text-red-600 dark:text-red-400 p-4 flex justify-center items-center h-screen">
+                <p>Currently no properties, please add some</p>
+            </div>
+        )
+    }
+
     if (error) {
         return (
             <div className="text-center text-red-600 dark:text-red-400 p-4">

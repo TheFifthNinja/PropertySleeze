@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Example({renter}) {
   const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Example({renter}) {
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:8084/renter/${username}`, {
+      const response = await fetch(`http://localhost:8084/renter/${username}/${password}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -56,6 +57,20 @@ export default function Example({renter}) {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    required
+                    className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    type="text"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                     className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-1.5 text-black shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm"
                   />

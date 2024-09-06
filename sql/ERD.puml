@@ -18,6 +18,7 @@ class Property{
 class Renter{
  username: VarChar(100)
 --
+ password: VarChar(100)
 }
 Renter ||--o{ Renting
 Renter ||--o{ Property

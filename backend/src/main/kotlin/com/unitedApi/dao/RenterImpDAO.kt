@@ -13,8 +13,9 @@ class RenterImpDAO(val connection: Connection):RenterDAO {
     }
 
     override fun createRenter(renter: Renter) {
-        val statement = connection.prepareStatement("insert into Renter(username) values(?)")
+        val statement = connection.prepareStatement("insert into Renter(username,password) values(?,?)")
         statement.setString(1,renter.username)
+        statement.setString(2,renter.password)
         statement.executeUpdate()
     }
 
