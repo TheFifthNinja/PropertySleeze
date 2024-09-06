@@ -39,7 +39,7 @@ Deployed across three distinct virtual machines (VMs), the Job Application Track
     ```bash
     cd PropertySleeze
     ```
-3. Open Docker Desktop and ensure it is running.
+3. Open [Docker Desktop](https://www.docker.com/products/docker-desktop/) and ensure it is running.
 4. Build and run the project
     ```bash
     docker-compose up -d
@@ -49,15 +49,9 @@ Deployed across three distinct virtual machines (VMs), the Job Application Track
 
 ### Shutting Down the Project
 
-1. Shut down the job tracker 
-    ```bash
+```bash
     docker-compose down
-    ```
-2. Shut down the database 
-    ```bash
-    cd database
-    docker-compose down
-    ```
+```
 
 ## Project Demo
 

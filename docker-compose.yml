@@ -1,6 +1,6 @@
 services:
   frontend:
-    build: ./Property-Sleeze
+    build: ./frontend
     volumes:
       - ./Property-Sleeze:/app
     ports:
