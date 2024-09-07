@@ -8,4 +8,5 @@ interface PropertyDAO {
     fun getPropertys():List<Property>
     fun getPropertyByPropertyManger(username:String):List<Property>
     fun getAllNonRentedPropertys():List<Property>
+    fun getAllRentedPropertys(username:String):List<Property>
 }

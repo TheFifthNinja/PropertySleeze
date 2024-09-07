@@ -40,4 +40,11 @@ class PropertyImpDAO(val connection: Connection):PropertyDAO {
         val resultSet = statement.executeQuery()
         return mappingDB(resultSet, ::Property)
     }
+
+    override fun getAllRentedPropertys(username: String): List<Property> {
+        val statement = connection.prepareStatement("SELECT * FROM Property where address in (Select address from Renting where username = ?)")
+        statement.setString(1,username)
+        val resultSet = statement.executeQuery()
+        return mappingDB(resultSet, ::Property)
+    }
 }

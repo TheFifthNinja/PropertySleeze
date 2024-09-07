@@ -15,6 +15,7 @@ fun Application.module() {
     install(CORS) {
         allowHost("localhost:5173")
         allowHeader(HttpHeaders.ContentType)
+        allowMethod(HttpMethod.Delete)
     }
     configurePlugins()
     configureRouting()

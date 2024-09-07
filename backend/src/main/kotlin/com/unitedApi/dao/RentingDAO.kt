@@ -8,4 +8,5 @@ interface RentingDAO {
     fun getRentings():List<Renting>
     fun getRentingByUsername(username: String):List<Renting>
     fun getRentingByAddress(address: String):List<Renting>
+    fun deleteRenting(address: String,username: String)
 }

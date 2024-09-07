@@ -121,6 +121,18 @@ fun Route.rentingRouting() {
             rentingDAO.createRenting(renting)
             call.respond(HttpStatusCode.Created)
         }
+        delete("{username}/{address}") {
+            val username = call.parameters["username"]
+            val address = call.parameters["address"]
+            if (username != null && address != null) {
+                rentingDAO.deleteRenting(username,address)
+                call.respond(HttpStatusCode.Accepted)
+            }
+            else
+            {
+                call.respond(HttpStatusCode.BadRequest, "Missing username or address")
+            }
+        }
     }
 }
 
@@ -161,6 +173,14 @@ fun Route.propertyRouting() {
         }
         get("/notRenting") {
             call.respond(propertyDAO.getAllNonRentedPropertys())
+        }
+        get("/renting/{username}") {
+            val username = call.parameters["username"]
+            if (username != null) {
+                call.respond(propertyDAO.getAllRentedPropertys(username))
+            }else{
+                call.respond(HttpStatusCode.BadRequest, "Missing username")
+            }
         }
     }
 }

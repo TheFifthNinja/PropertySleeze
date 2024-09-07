@@ -39,4 +39,11 @@ class RentingImpDAO(val connection: Connection):RentingDAO {
         val resultSet = statement.executeQuery()
         return mappingDB(resultSet,::Renting)
     }
+
+    override fun deleteRenting(address: String,username: String) {
+        val statement = connection.prepareStatement("Delete FROM Renting where address = ? and username = ?")
+        statement.setString(1,username)
+        statement.setString(2,address)
+        statement.executeUpdate()
+    }
 }
