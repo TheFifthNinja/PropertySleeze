@@ -15,9 +15,9 @@ ___
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/TheFifthNinja/PropertySleeze)
 [![CI - Build and Test](https://github.com/TheFifthNinja/PropertySleeze/actions/workflows/frontend.yml/badge.svg)](https://github.com/TheFifthNinja/PropertySleeze/actions/workflows/frontend.yml)
 
-This project leverages virtualization technologies to create and deploy a flexible software tool tailored for job seekers. The application, called the Job Application Tracker, is developed to assist students and job hunters in organizing and managing their job search efforts more effectively.
+This project leverages virtualization technologies to create and list properties and will display them to be rented by others. The application, called PropertySleeze, is developed to assist the everyday man meet their needs.
 
-Deployed across three distinct virtual machines (VMs), the Job Application Tracker highlights the advantages of distributed systems and cloud-compatible development practices. It allows users to keep track of their applications by recording key details such as the roles and companies applied to, the status of each application, submission dates, personal notes, and a detailed timeline of each application's progress.
+Deployed across three distinct virtual machines (VMs), PropertySleeze highlights the advantages of distributed systems and cloud-compatible development practices.
 
 ## Built With
 
