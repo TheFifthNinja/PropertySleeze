@@ -5,8 +5,9 @@ import java.sql.Connection
 import java.sql.DriverManager
 
 val dbConnection: Connection = DriverManager.getConnection(
-    "jdbc:postgresql://52.91.167.41:5432/propertysleeze",
-    "psleeze","ps"
+    System.getenv("DB_URL") ?: "jdbc:postgresql://localhost:5432/propertysleeze",
+    System.getenv("DB_USER") ?: "psleeze",
+    System.getenv("DB_PASSWORD") ?: "ps"
 )
 
 val propertyDAO: PropertyDAO = PropertyImpDAO(dbConnection).apply { runBlocking {} }

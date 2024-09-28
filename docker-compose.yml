@@ -1,32 +1,10 @@
 services:
   frontend:
     build: ./frontend
-    volumes:
-      - ./frontend:/app
     ports:
       - "5173:5173"
-    depends_on:
-      db:
-        condition: service_healthy
 
   backend:
     build: ./backend
-    volumes:
-      - ./backend/build/libs/fat.jar:/app/ktor-docker-sample.jar
     ports:
       - "8084:8084"
-    depends_on:
-      db:
-        condition: service_healthy
-
-  db:
-    image: postgres
-    volumes:
-      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-    environment:
-      POSTGRES_DB: PropertySleeze
-      POSTGRES_HOST_AUTH_METHOD: trust
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-      interval: 3s

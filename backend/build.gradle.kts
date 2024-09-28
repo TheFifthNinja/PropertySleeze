@@ -38,9 +38,7 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:1.19.8")
     testImplementation("org.testcontainers:testcontainers:1.19.8")
     testImplementation("org.testcontainers:junit-jupiter:1.19.8")
-
-
-
+    implementation("org.postgresql:postgresql:42.2.23")
     implementation("org.postgresql:postgresql:$postgresql_driver_version")
 }
 ktor {
