@@ -6,7 +6,7 @@ import java.sql.DriverManager
 
 val dbConnection: Connection = DriverManager.getConnection(
     "jdbc:postgresql://52.91.167.41:5432/propertysleeze",
-    "postgres","postgres"
+    "psleeze","ps"
 )
 
 val propertyDAO: PropertyDAO = PropertyImpDAO(dbConnection).apply { runBlocking {} }
