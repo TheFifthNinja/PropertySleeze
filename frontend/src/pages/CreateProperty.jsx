@@ -27,7 +27,7 @@ export default function CreateProperty({ renter }) {
     let pName = Date.now()+picture.name
     formData.append('image', picture, pName);
 
-      const response = await fetch('http://localhost:8084/picture', {
+      const response = await fetch('http://98.83.178.60:8084/picture', {
         method: 'POST',
         headers: {
         },
@@ -47,7 +47,7 @@ export default function CreateProperty({ renter }) {
     console.log(fd)
 
     try {
-      const response = await fetch('http://localhost:8084/property', {
+      const response = await fetch('http://98.83.178.60:8084/property', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

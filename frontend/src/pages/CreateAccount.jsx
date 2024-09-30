@@ -19,7 +19,7 @@ export default function CreateAccount() {
     };
 
     try {
-      const response = await fetch('http://localhost:8084/renter', {
+      const response = await fetch('http://98.83.178.60:8084/renter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
