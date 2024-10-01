@@ -8,3 +8,6 @@ http://98.83.178.60:8084/
 
 ## docker full clean
 docker system prune -a
+
+## build update
+./gradlew buildFatJar
