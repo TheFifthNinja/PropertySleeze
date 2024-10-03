@@ -11,7 +11,7 @@ export default function Renting({renter}) {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('http://98.83.178.60:8084/property/renting/'+renter.username, {
+        fetch('http://52.44.56.95:8084/property/renting/'+renter.username, {
            method: 'GET',
         })
         .then((res) => {
@@ -26,7 +26,7 @@ export default function Renting({renter}) {
                 name: d.address,
                 href: '/details/'+d.address,
                 price: d.rent,
-                imageSrc: 'http://98.83.178.60:8084/pictures/' + d.picture,
+                imageSrc: 'http://52.44.56.95:8084/pictures/' + d.picture,
                 imageAlt: d.picture,
                 address: d.address
             }));

@@ -5,7 +5,7 @@ import java.sql.Connection
 import java.sql.DriverManager
 
 val dbConnection: Connection = DriverManager.getConnection(
-    "jdbc:postgresql://54.81.125.147:5432/propertysleeze",
+    "jdbc:postgresql://3.224.104.14:5432/propertysleeze",
     "psleeze",
     "ps"
 )

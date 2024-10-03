@@ -23,7 +23,7 @@ export default function Details({ darkMode, renter }) {
 
   useEffect(() => {
       setIsLoading(true);
-      fetch('http://98.83.178.60:8084/property/'+address, {
+      fetch('http://52.44.56.95:8084/property/'+address, {
          method: 'GET',
       })
       .then((res) => {
@@ -37,7 +37,7 @@ export default function Details({ darkMode, renter }) {
             name: data.address,
             price: '$'+data.rent,
             images: {
-                src: 'http://98.83.178.60:8084/pictures/'+data.picture,
+                src: 'http://52.44.56.95:8084/pictures/'+data.picture,
                 alt: data.picture,
             },
             description: data.description
@@ -52,7 +52,7 @@ export default function Details({ darkMode, renter }) {
         address: product.name,
     };
 
-    fetch('http://98.83.178.60:8084/renting', {
+    fetch('http://52.44.56.95:8084/renting', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

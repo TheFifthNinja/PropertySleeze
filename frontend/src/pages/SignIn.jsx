@@ -14,7 +14,7 @@ export default function Example({renter}) {
     setError(null);
 
     try {
-      const response = await fetch(`http://98.83.178.60:8084/renter/${username}/${password}`, {
+      const response = await fetch(`http://52.44.56.95:8084/renter/${username}/${password}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
