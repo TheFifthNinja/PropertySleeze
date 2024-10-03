@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     install(CORS) {
-        allowHost("localhost:5173")
+        anyHost()
         allowHeader(HttpHeaders.ContentType)
         allowMethod(HttpMethod.Delete)
     }

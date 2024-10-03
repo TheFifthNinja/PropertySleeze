@@ -11,3 +11,6 @@ docker system prune -a
 
 ## build update
 ./gradlew buildFatJar
+
+## Check image
+docker exec -it <container_id> /bin/bash

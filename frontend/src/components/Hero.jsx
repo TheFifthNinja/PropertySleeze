@@ -41,7 +41,7 @@ const Hero = ({ darkMode, renter }) => {
                         >
                             {renter ? 'Start Renting' : 'Get started'}
                         </Link>
-                        <a href="/About" className="text-sm font-semibold leading-6">
+                        <a href="/about" className="text-sm font-semibold leading-6">
                             Learn more <span aria-hidden="true">→</span>
                         </a>
                     </div>
