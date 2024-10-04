@@ -19,7 +19,7 @@ export default function CreateAccount() {
     };
 
     try {
-      const response = await fetch('http://52.44.56.95:8084/renter', {
+      const response = await fetch('https://api.propertysleeze.shop/renter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

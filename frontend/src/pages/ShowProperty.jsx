@@ -16,7 +16,7 @@ export default function ShowProperty({ renter }) {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('http://52.44.56.95:8084/property/notRenting', {
+        fetch('https://api.propertysleeze.shop/property/notRenting', {
            method: 'GET',
         })
         .then((res) => {
@@ -31,7 +31,7 @@ export default function ShowProperty({ renter }) {
                 name: d.address,
                 href: '/details/'+d.address,
                 price: d.rent,
-                imageSrc: 'http://52.44.56.95:8084/pictures/' + d.picture,
+                imageSrc: 'https://api.propertysleeze.shop/pictures/' + d.picture,
                 imageAlt: d.picture,
             }));
             setProducts(temp);

@@ -11,7 +11,7 @@ export default function Renting({renter}) {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('http://52.44.56.95:8084/property/renting/'+renter.username, {
+        fetch('https://api.propertysleeze.shop/property/renting/'+renter.username, {
            method: 'GET',
         })
         .then((res) => {
@@ -26,7 +26,7 @@ export default function Renting({renter}) {
                 name: d.address,
                 href: '/details/'+d.address,
                 price: d.rent,
-                imageSrc: 'http://52.44.56.95:8084/pictures/' + d.picture,
+                imageSrc: 'https://api.propertysleeze.shop/pictures/' + d.picture,
                 imageAlt: d.picture,
                 address: d.address
             }));
@@ -41,7 +41,7 @@ export default function Renting({renter}) {
     },[]);
 
     const handleClick = (address) => {
-        fetch('http://98.83.178.60:8084/renting/'+renter.username+'/'+address, {
+        fetch('https://api.propertysleeze.shop/renting/'+renter.username+'/'+address, {
                method: 'DELETE',
         })
         .then((res) => {
