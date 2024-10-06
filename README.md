@@ -1,9 +1,11 @@
-# Full Stack Web App Deployed Through AWS
-
-**October 2024 - Kevin Albert**  
-*Using virtualization to effect portable building and deployment of software applications*
-
----
+<br />
+<p align="center">
+    <h1 align="center">Full Stack Web App Deployed Through AWS</h1>
+    <h6 align="center">October 2024 -  Kevin Albert</h6>
+    <p align="center">
+        Using virtualization to effect portable building and deployment of software applications
+    </p>
+</p>
 
 ## Overview
 
@@ -14,7 +16,7 @@
 
 This project leverages virtualization technologies to create, list, and display properties for rent. The application, called **PropertySleeze**, is designed to assist individuals in meeting their housing needs.
 
-Deployed across three distinct virtual machines (VMs), PropertySleeze highlights the advantages of distributed systems and cloud-compatible development practices.
+Deployed on Amazon Web Services (AWS), the project consists of a frontend built with React.js and a backend built with Kotlin Ktor. The database is managed using PostgreSQL.
 
 ## Built With
 
